@@ -1,12 +1,12 @@
 {
-  "name": "basic-electron-react-boilerplate",
-  "version": "0.7.0",
+  "name": "simple-audio-converter",
+  "version": "0.0.1",
   "description": "Minimal and modern react+electron+webpack boilerplate",
-  "author": "Phillip Barbiero",
-  "homepage": "https://github.com/pbarbiero/basic-electron-react-boilerplate",
+  "author": "Federico Obialero",
+  "homepage": "https://github.com/slyfox42/simple-audio-converter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pbarbiero/basic-electron-react-boilerplate.git"
+    "url": "https://github.com/slyfox42/simple-audio-converter.git"
   },
   "license": "MIT",
   "main": "main.js",
@@ -15,23 +15,53 @@
     "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
     "build": "webpack --config webpack.build.config.js",
     "package": "webpack --config webpack.build.config.js",
-    "postpackage": "electron-packager ./ --out=./builds"
+    "postpackage": "electron-packager ./ --out=./builds",
+    "lint": "eslint src --ext js,jsx --ignore-path .gitignore --fix"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.0",
-    "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
     "css-loader": "^1.0.0",
     "electron": "^1.7.8",
     "electron-packager": "^12.1.1",
-    "extract-text-webpack-plugin": "^3.0.1",
+    "eslint": "^5.4.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
   }
 }
