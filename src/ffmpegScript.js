@@ -1,14 +1,3 @@
-// import Ffmpeg from 'fluent-ffmpeg'
-// import constants from './constants'
-
-// const getData = async () => {
-//   const ffmpeg = new Ffmpeg()
-//   ffmpeg.setFfmpegPath(constants.ffmpegPath)
-//   ffmpeg.input('~/Desktop/asd.m4a').noAudio()
-// }
-
-// getData()
-
 const Ffmpeg = require('fluent-ffmpeg')
 const constants = require('./constants')
 
