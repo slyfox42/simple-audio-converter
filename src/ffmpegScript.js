@@ -1,12 +1,13 @@
-const Ffmpeg = require('fluent-ffmpeg')
-const constants = require('./constants')
+import { ffmpegPath, ffprobePath } from './constants'
+import Ffmpeg from 'fluent-ffmpeg'
 
-const getData = async () => {
+export default async path => {
+  console.log('PATH', path)
   const ffmpeg = new Ffmpeg()
-  ffmpeg.setFfmpegPath(constants.ffmpegPath)
-  ffmpeg.setFfprobePath(constants.ffprobePath)
+  ffmpeg.setFfmpegPath(ffmpegPath)
+  ffmpeg.setFfprobePath(ffprobePath)
   ffmpeg
-    .input('/Users/federico/Desktop/Orion.wav')
+    .input(path)
     // set audio bitrate
     .audioBitrate('128k')
     // set audio codec
@@ -23,5 +24,3 @@ const getData = async () => {
     // save to file
     .save('/Users/federico/Desktop/result.mp3')
 }
-
-getData()
