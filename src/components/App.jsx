@@ -1,4 +1,5 @@
 import '../assets/css/App.css'
+import Button from './atoms/Button'
 import React, { Component } from 'react'
 
 // test comment
@@ -10,14 +11,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Hello, Electron!</h1>
         <p>
           I hope you enjoy using basic-electron-react-boilerplate to start your
           dev off right!
         </p>
         <input type="file" accept=".wav" onChange={this.onChange} />
-      </div>
+        <Button />
+      </React.Fragment>
     )
   }
 }
