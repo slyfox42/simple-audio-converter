@@ -1,7 +1,6 @@
 import '../assets/css/App.css'
 import React, { Component } from 'react'
 
-// test comment
 class App extends Component {
   onChange = val => {
     console.log('value', val.value)
