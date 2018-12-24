@@ -1,21 +1,25 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { spawn } = require('child_process');
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { spawn } = require('child_process')
 
 // Config directories
-const SRC_DIR = path.resolve(__dirname, 'src');
-const OUTPUT_DIR = path.resolve(__dirname, 'dist');
+const SRC_DIR = path.resolve(__dirname, 'src')
+const OUTPUT_DIR = path.resolve(__dirname, 'dist')
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = [SRC_DIR];
+const defaultInclude = [SRC_DIR]
 
 module.exports = {
+  mode: 'development',
   entry: SRC_DIR + '/index.js',
   output: {
     path: OUTPUT_DIR,
     publicPath: '/',
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx']
   },
   module: {
     rules: [
@@ -36,7 +40,9 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: [{ loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }],
+        use: [
+          { loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }
+        ],
         include: defaultInclude
       }
     ]
@@ -45,7 +51,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.FLUENTFFMPEG_COV': false
     })
   ],
   devtool: 'cheap-source-map',
@@ -57,13 +64,13 @@ module.exports = {
       children: false
     },
     setup() {
-      spawn(
-        'electron',
-        ['.'],
-        { shell: true, env: process.env, stdio: 'inherit' }
-      )
-      .on('close', code => process.exit(0))
-      .on('error', spawnError => console.error(spawnError));
+      spawn('electron', ['.'], {
+        shell: true,
+        env: process.env,
+        stdio: 'inherit'
+      })
+        .on('close', () => process.exit(0))
+        .on('error', spawnError => console.error(spawnError))
     }
   }
-};
+}

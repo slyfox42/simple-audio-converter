@@ -1,17 +1,18 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BabiliPlugin = require('babili-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BabiliPlugin = require('babili-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // Config directories
-const SRC_DIR = path.resolve(__dirname, 'src');
-const OUTPUT_DIR = path.resolve(__dirname, 'dist');
+const SRC_DIR = path.resolve(__dirname, 'src')
+const OUTPUT_DIR = path.resolve(__dirname, 'dist')
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
-const defaultInclude = [SRC_DIR];
+const defaultInclude = [SRC_DIR]
 
 module.exports = {
+  mode: 'production',
   entry: SRC_DIR + '/index.js',
   output: {
     path: OUTPUT_DIR,
@@ -40,7 +41,9 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: [{ loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }],
+        use: [
+          { loader: 'file-loader?name=font/[name]__[hash:base64:5].[ext]' }
+        ],
         include: defaultInclude
       }
     ]
@@ -60,4 +63,4 @@ module.exports = {
     chunks: false,
     modules: false
   }
-};
+}
