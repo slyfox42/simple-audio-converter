@@ -22,6 +22,7 @@ if (
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    nodeIntegration: false,
     width: 1024,
     height: 768,
     show: false
