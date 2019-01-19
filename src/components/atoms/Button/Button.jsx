@@ -1,10 +1,22 @@
 import './Button.scss'
-import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-class Button extends Component {
-  render() {
-    return <button />
-  }
+const Button = ({ children, onClick }) => {
+  return (
+    <div className="button-base" onClick={onClick}>
+      {children}
+    </div>
+  )
+}
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func
+}
+
+Button.defaultProps = {
+  onClick: () => null
 }
 
 export default Button
