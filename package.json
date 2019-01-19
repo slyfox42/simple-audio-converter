@@ -45,6 +45,7 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "prettier": "1.15.3",
+    "prop-types": "^15.6.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "sass-loader": "^7.1.0",

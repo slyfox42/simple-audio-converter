@@ -1,21 +1,19 @@
 import '../assets/css/App.css'
+import Button from './atoms/Button'
 import React, { Component } from 'react'
 
+// test comment
 class App extends Component {
-  onChange = val => {
-    console.log('files', val.target.files)
-    console.log(val)
+  onChange = e => {
+    console.log('files', e.target.files)
+    const fileList = Object.keys(obj).map(key => obj[key])
   }
   render() {
     return (
-      <div>
-        <h1>Hello, Electron!</h1>
-        <p>
-          I hope you enjoy using basic-electron-react-boilerplate to start your
-          dev off right!
-        </p>
+      <React.Fragment>
         <input type="file" accept=".wav" onChange={this.onChange} />
-      </div>
+        <Button>Click Me!</Button>
+      </React.Fragment>
     )
   }
 }
