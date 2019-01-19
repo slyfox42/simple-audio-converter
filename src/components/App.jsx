@@ -5,7 +5,6 @@ import React, { Component } from 'react'
 // test comment
 class App extends Component {
   onChange = val => {
-    console.log('value', val.value)
     console.log('files', val.target.files)
     console.log(val)
   }
