@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BabiliPlugin = require('babili-webpack-plugin')
@@ -7,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // Config directories
 const SRC_DIR = path.resolve(__dirname, 'src')
 const OUTPUT_DIR = path.resolve(__dirname, 'dist')
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = [SRC_DIR]
@@ -31,7 +33,6 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              minimize: true,
               sourceMap: shouldUseSourceMap
             }
           },
