@@ -3,9 +3,10 @@ import Ffmpeg from 'fluent-ffmpeg'
 import path from 'path'
 
 export default async filePath => {
-  const ext = path.extname(filePath)
-  const basename = path.basename(filePath, ext)
+  const { dir, name } = path.parse(filePath)
+  const newFilePath = `${dir}/${name}.mp3`
   const ffmpeg = new Ffmpeg()
+
   ffmpeg.setFfmpegPath(ffmpegPath)
   ffmpeg.setFfprobePath(ffprobePath)
   ffmpeg
@@ -16,13 +17,9 @@ export default async filePath => {
     .audioCodec('libmp3lame')
     // set output format to force
     .format('mp3')
-    // setup event handlers
-    .on('end', function() {
-      console.log('file has been converted succesfully')
-    })
-    .on('error', function(err) {
-      console.log('an error happened: ' + err.message)
-    })
-    // save to file
-    .save(`/Users/federico/Desktop/${basename}.mp3`)
+    .on('end', () =>
+      console.log(`File ${newFilePath} converted and saved successfully!`)
+    )
+    .on('error', err => console.log('an error happened: ' + err.message))
+    .save(newFilePath)
 }
