@@ -1,0 +1,28 @@
+@import "../../_settings/variables.scss";
+
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.path-list-container {
+  color: black;
+  width: 250px;
+  margin: 20px;
+}
+
+.path-list-title {
+  font-size: $xl-font-size;
+  padding: $dist-l 0;
+}
+
+.path-list-item {
+  background: blue;
+  font-size: $base-font-size;
+}
+
+.path-list {
+  width : auto;
+  display: inline-block;
+}
