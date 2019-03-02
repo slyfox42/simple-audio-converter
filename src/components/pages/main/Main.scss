@@ -1,0 +1,15 @@
+@import "../../_settings/variables.scss";
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 100px auto;
+  text-align: center;
+  align-items: center;
+  width: 600px;
+}
+
+.app-title {
+  font-size: $xxl-font-size;
+  padding: $dist-s;
+}

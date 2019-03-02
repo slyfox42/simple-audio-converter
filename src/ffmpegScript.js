@@ -1,13 +1,15 @@
 import { ffmpegPath, ffprobePath } from './constants'
 import Ffmpeg from 'fluent-ffmpeg'
+import path from 'path'
 
-export default async path => {
-  console.log('PATH', path)
+export default async filePath => {
+  const ext = path.extname(filePath)
+  const basename = path.basename(filePath, ext)
   const ffmpeg = new Ffmpeg()
   ffmpeg.setFfmpegPath(ffmpegPath)
   ffmpeg.setFfprobePath(ffprobePath)
   ffmpeg
-    .input(path)
+    .input(filePath)
     // set audio bitrate
     .audioBitrate('128k')
     // set audio codec
@@ -22,5 +24,5 @@ export default async path => {
       console.log('an error happened: ' + err.message)
     })
     // save to file
-    .save('/Users/federico/Desktop/result.mp3')
+    .save(`/Users/federico/Desktop/${basename}.mp3`)
 }

@@ -1,4 +1,4 @@
 module.exports = {
-  ffmpegPath: '../ffmpeg/ffmpeg',
-  ffprobePath: '../ffmpeg/ffprobe'
+  ffmpegPath: 'ffmpeg/ffmpeg',
+  ffprobePath: 'ffmpeg/ffprobe'
 }

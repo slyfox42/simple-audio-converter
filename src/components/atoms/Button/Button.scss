@@ -1,19 +1,27 @@
-$button-success: #a7f226;
+@import "../../_settings/variables.scss";
 
 .button-base {
-  margin: 20px;
-  background: $button-success;
-  padding: 10px;
+  margin: 30px;
+  background: $ruby;
+  padding: 3px;
   height: 30px;
-  width: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
-  &:hover {
-    background: darken($button-success, 10%);
-  }
+}
+
+.small-button {
+  width: 100px;
+}
+
+.medium-button {
+  width: 200px;
+}
+
+.large-button {
+  width: 250px;
 }
