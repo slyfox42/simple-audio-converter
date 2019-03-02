@@ -23,7 +23,6 @@ const TYPE_PROPS = {
 
 const Button = ({ children, onClick, appearance }) => {
   const classProps = classnames('button-base', TYPE_PROPS[appearance].class)
-  console.log(classProps)
   return (
     <div className={classProps} onClick={onClick}>
       {children}

@@ -3,10 +3,7 @@ import fileActions from '../actions/file-actions'
 import u from 'updeep'
 
 const initialState = {
-  paths: [
-    '/Users/federico/Desktop/battery.wav',
-    '/Users/federico/Desktop/orion.wav'
-  ]
+  paths: ['/Users/federico/Desktop/battery.wav']
 }
 
 const addPath = filePath => paths => [].concat(paths, [filePath])
@@ -17,6 +14,13 @@ const fileReducer = createReducer(
       u(
         {
           paths: addPath(payload)
+        },
+        state
+      ),
+    [fileActions.filesConverted]: state =>
+      u(
+        {
+          paths: []
         },
         state
       )

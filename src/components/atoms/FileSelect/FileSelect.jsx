@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const FileSelect = props => {
-  console.log(props)
   const onChange = e => {
     const files = e.target.files
     props.fileAdd(files[0].path)
